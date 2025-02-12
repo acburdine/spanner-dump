@@ -1,4 +1,4 @@
-module github.com/cloudspannerecosystem/spanner-dump
+module github.com/acburdine/spanner-dump
 
 go 1.22.7
 
