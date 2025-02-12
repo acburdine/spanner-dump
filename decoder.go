@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
-	pb "google.golang.org/genproto/googleapis/spanner/v1"
+	pb "cloud.google.com/go/spanner/apiv1/spannerpb"
 )
 
 type jsonMessage struct {
@@ -178,7 +178,7 @@ func DecodeColumn(column spanner.GenericColumnValue) (string, error) {
 			return "", err
 		}
 		return nullFloat64ToString(v), nil
-	case pb.TypeCode_INT64:
+	case pb.TypeCode_INT64, pb.TypeCode_ENUM:
 		var v spanner.NullInt64
 		if err := column.Decode(&v); err != nil {
 			return "", err
